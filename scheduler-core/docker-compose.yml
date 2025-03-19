@@ -26,6 +26,8 @@ services:
     - ./core_wallet.json:/wallet.json
     networks:
       - iexec_network
+    ports:
+      - 13010:13010
   blockchain-adapter-mongo:
     command: -c "mongod --bind_ip_all --port 13012"
     entrypoint: /bin/bash
@@ -85,6 +87,8 @@ services:
     - ./core_wallet.json:/iexec-wallet/encrypted-wallet.json
     networks:
       - iexec_network
+    ports:
+      - 13000:13000
   grafana:
     depends_on:
     - mongo
@@ -122,6 +126,8 @@ services:
     restart: unless-stopped
     networks:
       - iexec_network
+    ports:
+      - 3000:3000
   letsencrypt:
     depends_on:
     - nginx-proxy
@@ -231,6 +237,8 @@ services:
     - ./platform-registry-config:/config
     networks:
       - iexec_network
+    ports:
+    - 8888:8888
 volumes:
   companioncerts: null
   mongodb-data: null
