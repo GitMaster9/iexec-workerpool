@@ -23,7 +23,7 @@ services:
     image: $DOCKER_REGISTRY/iexec-blockchain-adapter-api:$BLOCKCHAIN_ADAPTER_TAG
     restart: unless-stopped
     volumes:
-    - ./wallet.json:/wallet.json
+    - ./core_wallet.json:/wallet.json
     networks:
       - iexec_network
   blockchain-adapter-mongo:
@@ -82,7 +82,7 @@ services:
     image: $DOCKER_REGISTRY/iexec-core:$CORE_TAG
     restart: unless-stopped
     volumes:
-    - ./wallet.json:/iexec-wallet/encrypted-wallet.json
+    - ./core_wallet.json:/iexec-wallet/encrypted-wallet.json
     networks:
       - iexec_network
   grafana:
@@ -216,7 +216,7 @@ services:
     image: iexechub/iexec-order-publisher:$ORDER_PUBLISHER_TAG
     restart: unless-stopped
     volumes:
-    - ./wallet.json:/wallets/wallet.json
+    - ./core_wallet.json:/wallets/wallet.json
     networks:
       - iexec_network
   platform-registry:

@@ -10,7 +10,7 @@ iexec init --skip-wallet
   }
 }
 
-3. kreiraj wallet (kreiraj password, npr: password123core)
+3. kreiraj wallet (kreiraj password, npr: password123worker)
 iexec wallet create --keystoredir ./
 
 4. preimenuj kreirani wallet (npr. worker_wallet.json)

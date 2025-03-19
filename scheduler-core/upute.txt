@@ -22,7 +22,7 @@ iexec workerpool init --wallet-file "core_wallet.json" --keystoredir ./
 
 7. provjeri da li je workerpool.owner jednak kao "address" u core_wallet.json fajlu
 jq .workerpool iexec.json
-jq .workerpool core_wallet.json
+jq .address core_wallet.json
 
 8. registriraj workerpool na blockchainu da bi dobio workerpool address
 iexec workerpool deploy --wallet-file "core_wallet.json" --keystoredir ./
