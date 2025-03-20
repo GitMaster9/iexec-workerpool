@@ -3,7 +3,7 @@ services:
     container_name: worker_prod-$WORKER_ID
     environment:
     - IEXEC_DEVELOPER_LOGGER_ENABLED=False
-    - IEXEC_WORKER_DOCKER_NETWORK_NAME=worker-net
+    - IEXEC_WORKER_DOCKER_NETWORK_NAME=iexec_network
     - IEXEC_CORE_HOST=$PROD_CORE_HOST
     - IEXEC_CORE_PORT=13000
     - IEXEC_CORE_PROTOCOL=http
@@ -21,17 +21,20 @@ services:
     - IEXEC_WORKER_DOCKER_REGISTRY_ADDRESS_1=${REGISTRY_ADDRESS:-}
     - IEXEC_WORKER_DOCKER_REGISTRY_USERNAME_1=${REGISTRY_USERNAME:-}
     - IEXEC_WORKER_DOCKER_REGISTRY_PASSWORD_1=${REGISTRY_PASSWORD:-}
+    - POOL_ADDRESS=$WORKERPOOL_ADDRESS
     - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health
     healthcheck:
       test: curl --fail http://localhost:13100/actuator/health || exit 1
     image: $DOCKER_REGISTRY/iexec-worker:$WORKER_TAG
     networks:
-      - iexec_network
+      iexec_network:
+        aliases:
+          - worker
     restart: unless-stopped
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-    - ./tmp/results/worker_prod-$WORKER_ID:$RESULTS_DIR/worker_prod-$WORKER_ID
-    - ./$WALLET:/$WALLET:rw
+    - $RESULTS_DIR/worker_prod-$WORKER_ID:$RESULTS_DIR/worker_prod-$WORKER_ID
+    - ./$WALLET:/$WALLET
 
 networks:
   iexec_network:
