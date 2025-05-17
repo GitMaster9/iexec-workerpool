@@ -10,7 +10,7 @@ cd worker
 iexec init --skip-wallet
 ```
 
-2. Check "chain.json" ( default has to be set to "bellecour")
+2. Check "chain.json" (default has to be set to "bellecour")
 ```json
 {
   "default": "bellecour",
@@ -28,13 +28,9 @@ iexec wallet create --keystoredir ./
 
 4. Rename the newly created wallet (e.g. "worker_wallet.json")
 
-5. Create a new Docker network (if the worker container need to be on the same network as the scheduler-core containers)
-```bash
-docker network create iexec_network
-```
+5. Update the .env file to match your wallet filename, password and workerpool address
 
 6. Start the Docker container.
-
 ```bash
 docker compose up -d
 ```

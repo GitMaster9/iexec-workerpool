@@ -92,7 +92,9 @@ iexec workerpool show --raw | jq
 docker network create iexec_network
 ```
 
-13. Start the Docker containers.
+13. Update the .env file to match your workerpool address and other parameters
+
+14. Start the Docker containers.
 ```bash
 docker compose up -d
 ```
