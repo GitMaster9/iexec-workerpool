@@ -1,3 +1,10 @@
+# Worker tutorial
+
+1. Make sure you are in the "worker" directory
+```bash
+cd worker
+```
+
 1. Initialize iexec workspace
 ```bash
 iexec init --skip-wallet
@@ -26,10 +33,7 @@ iexec wallet create --keystoredir ./
 docker network create iexec_network
 ```
 
-6. Start the Docker container from the "worker" folder.
-```bash
-cd worker
-```
+6. Start the Docker container.
 
 ```bash
 docker compose up -d

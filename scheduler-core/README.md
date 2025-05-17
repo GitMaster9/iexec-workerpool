@@ -1,11 +1,16 @@
 # Scheduler Core tutorial
 
-1. Initialize iexec workspace
+1. Make sure you are in the "scheduler-core" directory
+```bash
+cd scheduler-core
+```
+
+2. Initialize iexec workspace
 ```bash
 iexec init --skip-wallet
 ```
 
-2. Check "chain.json" ( default has to be set to "bellecour")
+3. Check "chain.json" ( default has to be set to "bellecour")
 ```json
 {
   "default": "bellecour",
@@ -16,21 +21,21 @@ iexec init --skip-wallet
 }
 ```
 
-3. Create iexec wallet (you will need to input a new password, e.g. "password123core")
+4. Create iexec wallet (you will need to input a new password, e.g. "password123core")
 ```bash
 iexec wallet create --keystoredir ./
 ```
 
-4. Rename the newly created wallet (e.g. "core_wallet.json")
+5. Rename the newly created wallet (e.g. "core_wallet.json")
 
-5. Localy initialize you workerpool registration
+6. Localy initialize you workerpool registration
 ```bash
 iexec workerpool init --wallet-file "core_wallet.json" --keystoredir ./
 ```
 
-6. Edit the "iexec.json" and change the "workerpool.description". This field will appear publicly on the blockchain and the marketplace.
+7. Edit the "iexec.json" and change the "workerpool.description". This field will appear publicly on the blockchain and the marketplace.
 
-7. Make sure the "workerpool.owner" field of iexec.json file matches the "address" field of the "core_wallet.json" file.
+8. Make sure the "workerpool.owner" field of iexec.json file matches the "address" field of the "core_wallet.json" file.
 ```bash
 jq .workerpool iexec.json
 ```
@@ -39,14 +44,14 @@ jq .workerpool iexec.json
 jq .address core_wallet.json
 ```
 
-8. Register your workerpool on the blockchain to get its workerpool address
+9. Register your workerpool on the blockchain to get its workerpool address
 ```bash
 iexec workerpool deploy --wallet-file "core_wallet.json" --keystoredir ./
 ```
 
 You may now check the workerpool metadata by typing your workerpool address into the search area on the explorer webpage (https://explorer.iex.ec/bellecour).
 
-9. Register an ENS and setup both ENS resolution and reverse resolution to your workerpool's deployment address
+10. Register an ENS and setup both ENS resolution and reverse resolution to your workerpool's deployment address
 ```bash
 ENS_WP_SUBDOMAIN="privateworkerpool"
 ```
@@ -59,7 +64,7 @@ WP_ADDR="$(jq -r ".workerpool | first(.[])" deployed.json )"
 iexec ens register "$ENS_WP_SUBDOMAIN" --for "$WP_ADDR" --wallet-file core_wallet.json --keystoredir ./
 ```
 
-10. Set your workerpool's API URL. Set the PROD_CORE_HOST
+11. Set your workerpool's API URL. Set the PROD_CORE_HOST
 
 ```bash
 PROD_CORE_HOST=core-prod.v8-bellecour.yourdomain
@@ -82,16 +87,12 @@ Check the workerpool settings (ENS name and API URL):
 iexec workerpool show --raw | jq
 ```
 
-11. Create a new Docker network (if the scheduler-core containers need to be on the same network as the worker containers)
+12. Create a new Docker network (if the scheduler-core containers need to be on the same network as the worker containers)
 ```bash
 docker network create iexec_network
 ```
 
-12. Start the Docker containers from the "scheduler-core" folder.
-```bash
-cd scheduler-core
-```
-
+13. Start the Docker containers.
 ```bash
 docker compose up -d
 ```
