@@ -64,14 +64,19 @@ WP_ADDR="$(jq -r ".workerpool | first(.[])" deployed.json )"
 iexec ens register "$ENS_WP_SUBDOMAIN" --for "$WP_ADDR" --wallet-file core_wallet.json --keystoredir ./
 ```
 
-11. Set your workerpool's API URL. Set the PROD_CORE_HOST
+Check the workerpool settings (ENS name):
+```bash
+iexec workerpool show --raw | jq
+```
+
+11. [OPTIONAL] Set your workerpool's API URL. Set the PROD_CORE_HOST_DOMAIN
 
 ```bash
-PROD_CORE_HOST=core-prod.v8-bellecour.yourdomain
+PROD_CORE_HOST_DOMAIN=core-prod.v8-bellecour.yourdomain
 ```
 
 ```bash
-CORE_URL="https://$(grep 'PROD_CORE_HOST=' .env | sed -e 's/PROD_CORE_HOST=//')"
+CORE_URL="https://$(grep 'PROD_CORE_HOST_DOMAIN=' .env | sed -e 's/PROD_CORE_HOST_DOMAIN=//')"
 ```
 
 ```bash
