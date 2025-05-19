@@ -53,7 +53,7 @@ You may now check the workerpool metadata by typing your workerpool address into
 
 10. Register an ENS and setup both ENS resolution and reverse resolution to your workerpool's deployment address
 ```bash
-ENS_WP_SUBDOMAIN="privateworkerpool"
+ENS_WP_SUBDOMAIN="riteh-workerpool"
 ```
 
 ```bash
@@ -97,4 +97,32 @@ docker network create iexec_network
 14. Start the Docker containers.
 ```bash
 docker compose up -d
+```
+
+15. Check the Grafana dashboard
+
+```
+http://$PROD_GRAFANA_HOST/
+```
+
+e.g.
+```
+http://localhost:3000/
+```
+
+Various metrics and health endpoints that are exposed by the services:
+```
+http://$PROD_CHAIN_ADAPTER_HOST/config/chain
+```
+
+```
+http://$PROD_CHAIN_ADAPTER_HOST/actuator/health
+```
+
+```
+http://$PROD_CORE_HOST/metrics
+```
+
+```
+http://$PROD_CORE_HOST/actuator/health
 ```

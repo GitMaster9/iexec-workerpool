@@ -34,3 +34,5 @@ iexec wallet create --keystoredir ./
 ```bash
 docker compose up -d
 ```
+
+7. You should now see the worker added to the workerpool on the Grafana GUI and the other metrics endpoints

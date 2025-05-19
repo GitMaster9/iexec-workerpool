@@ -20,7 +20,7 @@ services:
     - VIRTUAL_PORT=13010
     healthcheck:
       test: curl --fail http://localhost:13010/actuator/health || exit 1
-    image: $DOCKER_REGISTRY/iexec-blockchain-adapter-api:$BLOCKCHAIN_ADAPTER_TAG
+    image: iexechub/iexec-blockchain-adapter-api:$BLOCKCHAIN_ADAPTER_TAG
     restart: unless-stopped
     volumes:
     - ./core_wallet.json:/wallet.json
@@ -81,7 +81,7 @@ services:
     - VIRTUAL_PORT=13000
     healthcheck:
       test: curl --fail http://localhost:13000/actuator/health || exit 1
-    image: $DOCKER_REGISTRY/iexec-core:$CORE_TAG
+    image: iexechub/iexec-core:$CORE_TAG
     restart: unless-stopped
     volumes:
     - ./core_wallet.json:/iexec-wallet/encrypted-wallet.json
