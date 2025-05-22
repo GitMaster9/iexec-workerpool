@@ -5,9 +5,9 @@
 cd requester-python-app
 ```
 
-2. Initialize iexec workspace and create a wallet
+2. Initialize iexec workspace
 ```bash
-iexec init
+iexec init --skip-wallet
 ```
 
 3. Check "chain.json" ( default has to be set to "bellecour")
@@ -21,26 +21,33 @@ iexec init
 }
 ```
 
-4. Initialize iexec decentralized application (dApp, iApp)
+4. Create iexec wallet (you will need to input a new password, e.g. "password123requester")
 ```bash
-iexec app init
+iexec wallet create --keystoredir ./
+```
+
+5. Rename the newly created wallet (e.g. "requester_wallet.json")
+
+6. Initialize iexec decentralized application (dApp, iApp)
+```bash
+iexec app init --wallet-file "requester_wallet.json" --keystoredir ./
 ```
 
 This will generate the "app" part of the iexec.json config file. Edit that to your needs ("name" and Docker image - "multiaddr")
 
-5. Deploy the application
+7. Deploy the application
 ```bash
-iexec app deploy
+iexec app deploy --wallet-file "requester_wallet.json" --keystoredir ./
 ```
 This will generate the deployed.json file with the app address. You will use that address for publishing and running the app on the iExec network.
 
-6. Publish the app
+8. Publish the app
 ```bash
-iexec app publish [appAddress]
+iexec app publish [appAddress] --wallet-file [walletName] --keystoredir ./
 ```
 
 ```bash
-iexec app publish 0x28Ce45adEC5303ED0f6100375A7bA9049eC937b8
+iexec app publish 0x28Ce45adEC5303ED0f6100375A7bA9049eC937b8 --wallet-file "requester_wallet.json" --keystoredir ./
 ```
 
 You can check the published apporders
@@ -53,7 +60,7 @@ iexec orderbook app [appAddress]
 iexec orderbook app 0x28Ce45adEC5303ED0f6100375A7bA9049eC937b8
 ```
 
-7. Run the app on the specified workerpool you created
+9. Run the app on the specified workerpool you created
 ```bash
 iexec app run [appAddress] --workerpool [workerpoolAddress]
 ```
@@ -74,7 +81,7 @@ iexec app run 0x28Ce45adEC5303ED0f6100375A7bA9049eC937b8 --workerpool 0x767eb830
 
 This will create a deal with a generated ID (dealid).
 
-8. Check the deal using the generated ID
+10. Check the deal using the generated ID
 ```bash
 iexec deal show [dealID]
 ```
@@ -85,7 +92,7 @@ iexec deal show 0x7289902470ab0936630c44b578f36e7746422b7913f7758ba4cffcb01d0b50
 
 This will output the task ID.
 
-9. Check the task status
+11. Check the task status
 ```bash
 iexec task show [taskID]
 ```
