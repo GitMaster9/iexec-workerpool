@@ -4,5 +4,6 @@
 **/iexec.json
 **/worker_wallet.json
 **/iapp.config.json
+**/requester_wallet.json
 
 !/private-blockchain/scheduler-core/chain.json
