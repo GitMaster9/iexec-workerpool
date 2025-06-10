@@ -19,7 +19,7 @@ iexec wallet import [privateKey] --keystoredir ./
 iexec wallet import 0xb31a1121f4855e0cd32a1633f556174bd8326d47c36eb0b6a866bdf894b7cf50 --keystoredir ./
 ```
 
-4. Rename the newly created wallet (e.g. "core_wallet.json")
+4. Rename the newly imported wallet (e.g. "core_wallet.json")
 
 5. Localy initialize you workerpool registration
 ```bash
