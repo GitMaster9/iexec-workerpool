@@ -276,10 +276,7 @@ services:
       - 3001:3000
     environment:
       - MONGO_HOST=mongo-market
-      - REDIS_HOST=redis
-      - CHAIN_ID=1337
-      - WEB3_PROVIDER_URL=http://host.docker.internal:8545
-      - IEXEC_HUB_ADDRESS=$CHAIN_HUB_ADDRESS
+      - REDIS_HOST=redis-market
       - IEXEC_BLOCKCHAIN_ADAPTER_API_HUB_ADDRESS=$CHAIN_HUB_ADDRESS
       - CHAINS=LOCAL
       - LOCAL_CHAIN_ID=1337
@@ -291,22 +288,25 @@ services:
       - iexec_network
 
   mongo-market:
+    container_name: mongo-market
     image: mongo:4.4
-    ports:
-      - 27017:27017
+    expose:
+      - 27017
     networks:
       - iexec_network
 
-  redis:
+  redis-market:
+    container_name: redis-market
     restart: unless-stopped
     image: redis:alpine
     command: redis-server --appendonly yes
     expose:
-      - "6379"
+      - 6379
     networks:
       - iexec_network
 
   sms:
+    container_name: sms
     image: iexechub/iexec-sms:8.3.0
     ports:
       - 13300:13300
