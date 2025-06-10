@@ -1,6 +1,8 @@
-*/chain.json
-*/core_wallet.json
-*/deployed.json
-*/iexec.json
-*/worker_wallet.json
-*/iapp.config.json
+**/chain.json
+**/core_wallet.json
+**/deployed.json
+**/iexec.json
+**/worker_wallet.json
+**/iapp.config.json
+
+!/private-blockchain/scheduler-core/chain.json
