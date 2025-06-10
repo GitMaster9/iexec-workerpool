@@ -25,7 +25,7 @@ services:
     - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health
     healthcheck:
       test: curl --fail http://localhost:13100/actuator/health || exit 1
-    image: iexechub/iexec-worker:$WORKER_TAG
+    image: iexechub/iexec-worker:8.3.0
     networks:
       iexec_network:
         aliases:

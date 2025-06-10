@@ -126,9 +126,9 @@ iexec wallet import 0x440cdc12dd7d4abb96ad8f8a7076906e711eabfc47236c14a0478cced7
 13. Rename it to "core_wallet.json".
 
 
-14. Follow the ``scheduler-core`` instructions but add ``--chain local`` to ``workerpool init``, ``workerpool deploy`` commands.
+14. Follow the ``scheduler-core`` instructions but add ``--chain local`` to ``workerpool deploy`` command.
 ```bash
-iexec workerpool init --wallet-file "core_wallet.json" --keystoredir ./ --chain local
+iexec workerpool init --wallet-file "core_wallet.json" --keystoredir ./
 ```
 
 15. Deploy the workerpool and save the generated workerpool address.
